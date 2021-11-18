@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jump_mechanic : MonoBehaviour
 {
     public float FuerzaSalto; 
-    public int speed;
+    public float speed;
     Animator anim;
     Rigidbody2D rb;
     public bool enPiso;
@@ -27,6 +27,7 @@ public class Jump_mechanic : MonoBehaviour
         if (Input.GetButtonDown("Jump")) anim.SetTrigger("Jump");
         anim.SetBool("enPiso", enPiso);
         
+        //Esta parte le añade peso al personaje
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
@@ -34,6 +35,8 @@ public class Jump_mechanic : MonoBehaviour
             rb.mass = weight;
             
         }
+
+        //Esta parte hace la variable enPiso verdadera cuando el personaje toque el piso
 
         enPiso = Physics2D.OverlapCircle(refPie.position, 1f, 1 << 6);
 

@@ -12,6 +12,9 @@ public class Movements : MonoBehaviour
     public bool rotate;
     public Jump_mechanic script;
     Animator anim;
+    bool Walks;
+    bool yes = true;
+    bool no = false;
 
     void Start()
     {
@@ -28,18 +31,37 @@ public class Movements : MonoBehaviour
         var movement = Input.GetAxis("Horizontal");
         transform.position += new Vector3(movement, 0, 0) * Time.deltaTime * MovementSpeed;
 
-        if (Input.GetButtonDown("Horizontal")) anim.SetTrigger("Walking");
+        //This part makes the condition for the horizontal movement animation
 
-        if (movement > 0)
+        if (Input.GetKey(KeyCode.A))
         {
-            bool walking = true;
-
-            anim.SetBool("walking", walking);
-        }       
-
-            
-                
+            Walks = true;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            Walks = true;
+        }
         
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            Walks = false;
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            Walks = false;
+        }
+
+        if (Walks == true)
+        {
+            anim.SetBool("Walking", yes);
+        }
+        else if (Walks == false)
+        {
+            anim.SetBool("Walking", no);
+        }
+
+
+
 
 
         //This part rotates the character when pressing R!
@@ -65,8 +87,8 @@ public class Movements : MonoBehaviour
 
         MovX = Input.GetAxis("Horizontal");
 
-        if (MovX < 0 && script.enPiso) transform.localScale = new Vector3(-3.97f, 2.84f, 0);
-        if (MovX > 0 && script.enPiso) transform.localScale = new Vector3( 3.97f, 2.84f, 0);
+        if (MovX < 0 ) transform.localScale = new Vector3(-0.40285f, 0.35225f, 0);
+        if (MovX > 0 ) transform.localScale = new Vector3(0.40285f, 0.35225f, 0);
 
     }
 }
