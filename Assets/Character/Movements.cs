@@ -10,7 +10,7 @@ public class Movements : MonoBehaviour
     public Quaternion startQuaternion;
     public float lerptime = 1;
     public bool rotate;
-    public Jump_mechanic script;
+    public MCJump script;
     Animator anim;
     bool Walks;
     bool yes = true;
@@ -20,7 +20,7 @@ public class Movements : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         startQuaternion = transform.rotation;
-        script = FindObjectOfType<Jump_mechanic>();
+        script = FindObjectOfType<MCJump>();
         anim = GetComponent<Animator>();
     }
 
@@ -59,7 +59,6 @@ public class Movements : MonoBehaviour
         {
             anim.SetBool("Walking", no);
         }
-
 
 
 

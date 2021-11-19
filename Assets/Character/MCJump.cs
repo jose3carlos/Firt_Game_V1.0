@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Jump_mechanic : MonoBehaviour
+public class MCJump: MonoBehaviour
 {
     public float FuerzaSalto; 
     public float speed;
